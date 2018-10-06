@@ -5,7 +5,6 @@ import pysd
 
 
 
-
 class analytics:
 
     def runner(self, model, run_name, params=None):
@@ -26,5 +25,10 @@ class analytics:
             runs[r][param].plot(label=runs[r].name)
         plt.legend()
         return plt.plot()
+
+    def seasonal(self):
+    	mark_eff = np.sin(np.random.normal(loc=0.05, scale=0.15))
+    	#base_eff = bass.components.advertising_effectiveness()
+    	return mark_eff
 
 

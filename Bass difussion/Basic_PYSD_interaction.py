@@ -37,13 +37,6 @@ an.compare(runs=[run_1, run_2], param='Customer')
 ## Sinosoidal random variations to introduce basic seasonality in advertisement
 
 
-
-def seasonal ():
-    mark_eff = np.sin(np.random.normal(loc=0.05, scale=0.15))
-    #base_eff = bass.components.advertising_effectiveness()
-    return mark_eff
-
-
 bass.components.advertising_effectiveness = seasonal
 
 run_3 = an.runner(bass, 'run_3')

@@ -1,7 +1,22 @@
 {UTF-8}
+Advertising effectiveness=
+	Advertisement investment*1.1e-06
+	~	1/year
+	~		|
+
+Advertisement investment=
+	10000
+	~	
+	~		|
+
+Adoption from word of mouth=
+	(Customer/Total population)*Contact rate*Adoption fraction
+	~	People/year
+	~		|
+
 Customer= INTEG (
 	Adoption rate,
-		Total population*0.1)
+		Total population*0)
 	~	People
 	~		|
 
@@ -15,19 +30,9 @@ Adoption from advertisement=
 	~	People/year
 	~		|
 
-Adoption from word of mouth=
-	(Potential adopters/Total population)*Contact rate*Adoption fraction
-	~	People/year
-	~		|
-
 Adoption rate=
-	Adoption from advertisement+Adoption from word of mouth
+	DELAY N( Adoption from advertisement+Adoption from word of mouth,36,100, 7)
 	~	People/year
-	~		|
-
-Advertising effectiveness=
-	0.011
-	~	1/year
 	~		|
 
 Contact rate=
@@ -37,7 +42,7 @@ Contact rate=
 
 Potential adopters= INTEG (
 	-Adoption rate,
-		Total population*0.9)
+		Total population*1)
 	~	People
 	~		|
 
@@ -63,7 +68,7 @@ INITIAL TIME  = 0
 	|
 
 SAVEPER  = 
-        TIME STEP 
+        TIME STEP
 	~	year [0,?]
 	~	The frequency with which output is stored.
 	|
@@ -81,7 +86,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 10,2,Customer,531,178,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
 1,3,5,2,4,0,0,22,0,0,0,-1--1--1,,1|(447,173)|
 1,4,5,1,100,0,0,22,0,0,0,-1--1--1,,1|(348,173)|
-11,5,200,397,173,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+11,5,222,397,173,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
 10,6,Adoption rate,397,198,35,17,40,131,0,0,-1,0,0,0,0,0,0,0,0,0
 10,7,Adoption from advertisement,304,311,47,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
 10,8,Adoption from word of mouth,517,313,47,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
@@ -93,12 +98,18 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 10,14,Adoption fraction,653,392,55,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
 10,15,Contact rate,454,442,40,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
 1,16,13,7,0,0,0,0,0,128,0,-1--1--1,,1|(237,355)|
-1,17,1,8,1,0,0,0,0,128,0,-1--1--1,,1|(252,334)|
-1,18,11,8,1,0,0,0,0,128,0,-1--1--1,,1|(583,139)|
-1,19,15,8,1,0,0,0,0,128,0,-1--1--1,,1|(490,389)|
-1,20,14,8,1,0,0,0,0,128,0,-1--1--1,,1|(587,359)|
-1,21,1,7,1,0,0,0,0,128,0,-1--1--1,,1|(264,234)|
-1,22,11,2,0,0,0,0,0,128,1,-1--1--1,,1|(448,128)|
+1,17,11,8,1,0,0,0,0,128,0,-1--1--1,,1|(583,139)|
+1,18,15,8,1,0,0,0,0,128,0,-1--1--1,,1|(490,389)|
+1,19,14,8,1,0,0,0,0,128,0,-1--1--1,,1|(587,359)|
+1,20,1,7,1,0,0,0,0,128,0,-1--1--1,,1|(264,234)|
+1,21,11,2,0,0,0,0,0,128,1,-1--1--1,,1|(448,128)|
+1,22,2,8,1,0,0,0,0,64,0,-1--1--1,,1|(550,240)|
+12,23,0,1010,129,150,150,3,12,0,0,2,0,0,0,0,0,0,0,0,0
+Customer,Graph
+12,24,0,1001,465,150,150,3,44,0,0,2,0,0,0,0,0,0,0,0,0
+Adoption rate,Graph
+10,25,Advertisement investment,153,501,46,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,26,25,13,0,0,0,0,0,64,0,-1--1--1,,1|(166,453)|
 ///---\\\
 :L<%^E!@
 1:Current.vdfx
@@ -109,7 +120,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 27:0,
 34:0,
 4:Time
-5:Customer
+5:Advertisement investment
 35:Date
 36:YYYY-MM-DD
 37:2000
@@ -121,7 +132,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 72:0
 73:0
 24:0
-25:100
-26:100
+25:500
+26:500
 75:
 43:
